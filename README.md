@@ -30,16 +30,3 @@
 * **Runtime:** [Node.js](https://nodejs.org/)
 * **Gerenciador de Pacotes:** [npm](https://www.npmjs.com/)
 ---
-
-## 🚀 Como Executar o Projeto
-
-### Pré-requisitos
-Antes de começar, você precisará ter instalado em sua máquina:
-* [Node.js](https://nodejs.org/) (versão LTS recomendada)
-* [Git](https://git-scm.com/)
-
-### Passo a passo
-
-1. **Clone este repositório:**
-   ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
