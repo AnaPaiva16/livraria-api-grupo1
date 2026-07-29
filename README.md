@@ -41,3 +41,16 @@
   <img src="https://img.shields.io/badge/Git-60A5FA?style=flat-square&logo=git&logoColor=white" />
 </p>
 
+---
+
+## 💻 4. Como Rodar o Projeto
+
+### ⚙️ Pré-requisitos
+* [Node.js](https://nodejs.org/) instalado
+* Gerenciador de pacotes `npm`
+
+### 🔧 Passos para execução
+
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
