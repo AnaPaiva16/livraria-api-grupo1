@@ -1,4 +1,4 @@
-# 📘 API de Gestão da Livraria — Grupo N
+# 📘 API de Gestão da Livraria — Grupo 1
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-1E3A8A?style=for-the-badge&logoColor=white" alt="Status">
@@ -12,10 +12,29 @@
 
 ## 🔹 1. Integrantes do Grupo
 
-* 👤 **Ana J. Paiva** — [`ana.j.paiva@edu.senai.br`](mailto:ana.j.paiva@edu.senai.br)
-* 👤 **Danielly M. Souza** — [`danielly.m.souza@edu.senai.br`](mailto:danielly.m.souza@edu.senai.br)
+* 👤 **Ana Paiva** — [`ana.j.paiva@edu.senai.br`](mailto:ana.j.paiva@edu.senai.br)
+* 👤 **Danielly Monize** — [`danielly.m.souza@edu.senai.br`](mailto:danielly.m.souza@edu.senai.br)
 * 👤 **Lara Piva** — [`lara.piva@edu.senai.br`](mailto:lara.piva@edu.senai.br)
 * 👤 **Rafaelly Lopes** — [`rafaelly.lopes@edu.senai.br`](mailto:rafaelly.lopes@edu.senai.br)
+
+---
+
+## 👥 2. Divisão de Responsabilidades
+
+| Integrante | Responsável por | Arquivo |
+| :--- | :--- | :--- |
+| 👤 **Rafaelly Lopes** | `Pessoa.js` *(A classe-mãe)* | `src/models/Pessoa.js` |
+| 👤 **Lara Piva** | `Cliente.js` *(A subclasse)* | `src/models/Cliente.js` |
+| 👤 **Ana Paiva** | `Funcionario.js` *(A subclasse)* | `src/models/Funcionario.js` |
+| 👤 **Danielly Monize** | `testar.js` *(Junta tudo e testa)* | `src/models/testar.js` |
+
+---
+
+## 🚀 3. Como Executar o Projeto
+
+1. Clone o repositório:
+   ```bash
+   git clone [https://github.com/AnaPaiva16/livraria-api-grupo1.git](https://github.com/AnaPaiva16/livraria-api-grupo1.git)
 
 ---
 
