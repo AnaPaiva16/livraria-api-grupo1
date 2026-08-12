@@ -1,4 +1,4 @@
-# 📘 API de Gestão da Livraria — Grupo 8
+# 📘 API de Gestão da Livraria — Grupo 1
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-1E3A8A?style=for-the-badge&logoColor=white" alt="Status">
@@ -19,15 +19,14 @@
 
 ---
 
-## 🔄 2. Divisão de Responsabilidades
+## 👥 2. Divisão de Responsabilidades (Atividade Atual)
 
-> ℹ️ *Esta tabela é atualizada **a cada bloco**, garantindo o rodízio de tarefas entre a equipe.*
-
-| Bloco | Integrante | O que ficou sob responsabilidade dele(a) |
-| :---: | :--- | :--- |
-| <img src="https://img.shields.io/badge/Bloco_1-1D4ED8?style=flat-square" /> | *(a preencher)* | *(a preencher)* |
-| <img src="https://img.shields.io/badge/Bloco_2-2563EB?style=flat-square" /> | *(a preencher)* | *(a preencher)* |
-| <img src="https://img.shields.io/badge/Bloco_3-3B82F6?style=flat-square" /> | *(a preencher)* | *(a preencher)* |
+| Integrante | Responsável por | Arquivo |
+| :--- | :--- | :--- |
+| 👤 **Rafaelly Lopes** | `Pessoa.js` *(A classe-mãe)* | `src/models/Pessoa.js` |
+| 👤 **Lara Piva** | `Cliente.js` *(A subclasse)* | `src/models/Cliente.js` |
+| 👤 **Ana Paiva** | `Funcionario.js` *(A subclasse)* | `src/models/Funcionario.js` |
+| 👤 **Danielly Monize** | `testar.js` *(Junta tudo e testa)* | `src/models/testar.js` |
 
 ---
 
@@ -43,14 +42,13 @@
 
 ---
 
-## 💻 4. Como Rodar o Projeto
+## 🚀 4. Como Rodar o Projeto
 
-## ⚙️ Pré-requisitos
+### ⚙️ Pré-requisitos
 * [Node.js](https://nodejs.org/) instalado
-* Gerenciador de pacotes `npm`
 
-## 🔧 Passos para execução
+### 🔧 Passos para execução
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/livraria-api-grupo8.git](https://github.com/AnaPaiva16/livraria-api-grupo8.git)
+   git clone [https://github.com/AnaPaiva16/livraria-api-grupo8.git](https://github.com/AnaPaiva16/livraria-api-grupo1.git)
