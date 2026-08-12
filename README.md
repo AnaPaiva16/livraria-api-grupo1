@@ -1,4 +1,4 @@
-# 📘 API de Gestão da Livraria — Grupo N
+# 📘 API de Gestão da Livraria — Grupo 8
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-1E3A8A?style=for-the-badge&logoColor=white" alt="Status">
@@ -12,10 +12,10 @@
 
 ## 🔹 1. Integrantes do Grupo
 
-* 👤 **Ana J. Paiva** — [`ana.j.paiva@edu.senai.br`](mailto:ana.j.paiva@edu.senai.br)
-* 👤 **Danielly M. Souza** — [`danielly.m.souza@edu.senai.br`](mailto:danielly.m.souza@edu.senai.br)
-* 👤 **Lara Piva** — [`lara.piva@edu.senai.br`](mailto:lara.piva@edu.senai.br)
-* 👤 **Rafaelly Lopes** — [`rafaelly.lopes@edu.senai.br`](mailto:rafaelly.lopes@edu.senai.br)
+* 👤 **Ana J. Paiva** — [@AnaPaiva16](https://github.com/AnaPaiva16) | [`ana.j.paiva@edu.senai.br`](mailto:ana.j.paiva@edu.senai.br)
+* 👤 **Danielly M. Souza** — [@daniellysanches](https://github.com/daniellysanches) | [`danielly.m.souza@edu.senai.br`](mailto:danielly.m.souza@edu.senai.br)
+* 👤 **Lara Piva** — [@lara-piva](https://github.com/lara-piva) | [`lara.piva@edu.senai.br`](mailto:lara.piva@edu.senai.br)
+* 👤 **Rafaelly Lopes** — [@rafaellylopes-code](https://github.com/rafaellylopes-code) | [`rafaelly.lopes@edu.senai.br`](mailto:rafaelly.lopes@edu.senai.br)
 
 ---
 
@@ -45,12 +45,12 @@
 
 ## 💻 4. Como Rodar o Projeto
 
-### ⚙️ Pré-requisitos
+## ⚙️ Pré-requisitos
 * [Node.js](https://nodejs.org/) instalado
 * Gerenciador de pacotes `npm`
 
-### 🔧 Passos para execução
+## 🔧 Passos para execução
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+   git clone [https://github.com/seu-usuario/livraria-api-grupo8.git](https://github.com/AnaPaiva16/livraria-api-grupo8.git)
