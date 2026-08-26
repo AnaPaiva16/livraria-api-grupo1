@@ -50,5 +50,4 @@
 ### 🔧 Passos para execução
 
 1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/AnaPaiva16/livraria-api-grupo8.git](https://github.com/AnaPaiva16/livraria-api-grupo1.git)
+   git clone [https://github.com/AnaPaiva16/livraria-api-grupo1.git](https://github.com/AnaPaiva16/livraria-api-grupo1.git)
