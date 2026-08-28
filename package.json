@@ -1,0 +1,19 @@
+{
+  "name": "livraria-api-grupo1",
+  "version": "1.0.0",
+  "description": "<p align=\"left\">\r   <img src=\"https://img.shields.io/badge/Status-Em%20Desenvolvimento-1E3A8A?style=for-the-badge&logoColor=white\" alt=\"Status\">\r   <img src=\"https://img.shields.io/badge/Node.js-3B82F6?style=for-the-badge&logo=nodedotjs&logoColor=white\" alt=\"Node.js\">\r   <img src=\"https://img.shields.io/badge/SENAI-00529B?style=for-the-badge\" alt=\"SENAI\">\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
