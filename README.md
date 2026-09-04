@@ -42,7 +42,9 @@
 
 ---
 
-## 📊 4. Tabela de Auditoria (UML x MVC)
+## 📊 4. Diagrama UML & Tabela de Auditoria (UML x MVC)
+
+🔗 **[Acessar Diagrama UML Completo no Google Drive](https://drive.google.com/file/d/1sk--wYqzi1dMSGqm03_2SODGD2yUy6GU/view?usp=sharing)**
 
 | Classe do diagrama | Existe em src/models/? | Se não existe, por quê |
 | :--- | :--- | :--- |
@@ -54,12 +56,19 @@
 | **Cliente** | Sim | — |
 | **Funcionario** | Sim | — |
 | **Carrinho** | Sim | — |
-| **Pedido** | Não | Ainda não existe em código nenhum; foi desenhada em 14/08 para o Bloco 3. |
-| **ItemPedido** | Não | Ainda não existe em código nenhum; foi desenhada em 14/08 para o Bloco 3. |
+| **Pedido** | Não | Representada apenas no diagrama UML (esperado para o planejamento da arquitetura). |
+| **ItemPedido** | Não | Representada apenas no diagrama UML (esperado para o planejamento da arquitetura). |
 
 ---
 
-## 🚀 5. Como Rodar o Projeto
+## 🧹 5. Refatoração e Clean Code
+* **Extração de Números Mágicos:** Substituição de valores numéricos soltos por constantes nomeadas.
+* **Modularização:** Divisão de métodos extensos em funções auxiliares menores de responsabilidade única.
+* **Revisão:** Código analisado e padronizado em rodadas de revisão entre os integrantes do grupo.
+
+---
+
+## 🚀 6. Como Rodar o Projeto
 
 ### ⚙️ Pré-requisitos
 * [Node.js](https://nodejs.org/) instalado
@@ -67,9 +76,5 @@
 ### 🔧 Passos para execução
 
 1. **Clone o repositório:**
-<<<<<<< HEAD
    ```bash
    git clone [https://github.com/AnaPaiva16/livraria-api-grupo1.git](https://github.com/AnaPaiva16/livraria-api-grupo1.git)
-=======
-   git clone [https://github.com/AnaPaiva16/livraria-api-grupo1.git](https://github.com/AnaPaiva16/livraria-api-grupo1.git)
->>>>>>> 3c9860b5e8b8da0046243e97e11b8b3bc7113ff5
