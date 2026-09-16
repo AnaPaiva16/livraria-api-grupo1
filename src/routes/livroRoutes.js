@@ -4,7 +4,7 @@
 // Implementação chega no Bloco 3, quando o banco de dados entrar.
 
 const express = require("express");
-const livroController = require("../controllers/livroControllers");
+const livroController = require("../controllers/livroController");
 
 const router = express.Router();
 

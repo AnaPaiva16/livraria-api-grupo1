@@ -1,13 +1,14 @@
 const express = require("express");
-const livroRoutes = require("./routes/livroRoutes");
+const routes = require("./routes");
+const logger = require("./middlewares/logger");
 
 const app = express();
-
-app.use(express.json());
-
 const PORTA = 3000;
 
-app.use("/livros", livroRoutes);
+
+app.use(express.json());
+app.use(logger);
+app.use(routes);
 
 app.get("/", (req, res) => {
     // req é requisição e res é resposta.
