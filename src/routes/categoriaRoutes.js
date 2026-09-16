@@ -8,9 +8,8 @@ const categoriaController = require("../controllers/categoriaController");
 
 const router = express.Router();
 
-router.get('/categorias', (req, res) => {
-    res.send('Rota de categorias funcionando!');
-});
+// Vincula a rota GET ao método do controller
+router.get('/categorias', categoriaController.getCategorias);
 
 // Exporta o router para ser usado no index.js
 module.exports = router;
