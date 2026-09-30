@@ -6,15 +6,21 @@ const livroService = require("../services/livroServices");
 // }
 
 function listar(req, res) {
+<<<<<<< HEAD
 const filtros = req.query;
 const livros = livroService.listarLivros(filtros);
 res.status(200).json(livros);
+=======
+  const filtros = req.query;
+  const livros = livroService.listarLivros(filtros);
+  res.status(200).json(livros);
+>>>>>>> 8e24511a7e3d4ff4dd82715dbee60cdb5522e21d
 }
 
 function buscarPorIndice(req, res) {
   const indice = req.params.indice;
   const livro = livroService.buscarLivroPorIndice(indice);
-  
+
   if (!livro) {
     return res.status(404).json({ erro: "Livro não encontrado" });
   }
@@ -30,7 +36,7 @@ function criar(req, res) {
 function atualizarCompleto(req, res) {
   const indice = req.params.indice;
   const livroAtualizado = livroService.atualizarLivroCompleto(indice, req.body);
-  
+
   if (!livroAtualizado) {
     return res.status(404).json({ erro: "Livro não encontrado" });
   }
@@ -41,7 +47,7 @@ function atualizarCompleto(req, res) {
 function atualizarParcial(req, res) {
   const indice = req.params.indice;
   const livroAtualizado = livroService.atualizarLivroParcial(indice, req.body);
-  
+
   if (!livroAtualizado) {
     return res.status(404).json({ erro: "Livro não encontrado" });
   }
@@ -52,18 +58,18 @@ function atualizarParcial(req, res) {
 function deletar(req, res) {
   const indice = req.params.indice;
   const excluido = livroService.deletarLivro(indice);
-  
+
   if (!excluido) {
     return res.status(404).json({ erro: "Livro não encontrado" });
   }
   res.status(204).send(); // Status 204 não retorna corpo/JSON
 }
 
-module.exports = { 
-  listar, 
-  buscarPorIndice, 
-  criar, 
-  atualizarCompleto, 
-  atualizarParcial, 
-  deletar 
+module.exports = {
+  listar,
+  buscarPorIndice,
+  criar,
+  atualizarCompleto,
+  atualizarParcial,
+  deletar,
 };

@@ -15,19 +15,28 @@ function buscarLivroPorIndice(indice) {
 
 function listarLivros(filtros) {
   let resultado = livros;
+<<<<<<< HEAD
   
+=======
+>>>>>>> 8e24511a7e3d4ff4dd82715dbee60cdb5522e21d
   if (filtros.autor) {
     resultado = resultado.filter((livro) =>
       livro.autor.toLowerCase().includes(filtros.autor.toLowerCase()),
     );
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8e24511a7e3d4ff4dd82715dbee60cdb5522e21d
   if (filtros.precoMax) {
     resultado = resultado.filter(
       (livro) => livro.preco <= Number(filtros.precoMax),
     );
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8e24511a7e3d4ff4dd82715dbee60cdb5522e21d
   return resultado;
 }
 
