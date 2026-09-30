@@ -5,12 +5,25 @@ const livros = [
   new Livro("Eloquent JavaScript", "Marijn Haverbeke", 45.0, 20),
 ];
 
-function listarLivros() {
-  return livros;
+function listarTodos() {
+  return;
 }
 
 function buscarLivroPorIndice(indice) {
   return livros[indice];
+}
+
+function listarLivros(filtros) {
+  let resultado = livros;
+  if (filtros.autor) {
+    resultado = resultado.filter((livro) =>
+      livro.autor.toLowerCase().includes(filtros.autor.toLowerCase())
+    );
+  }
+  if (filtros.precoMax) {
+    resultado = resultado.filter((livro) => livro.preco <= Number(filtros.precoMax));
+  }
+  return resultado;
 }
 
 function criarLivro(dados) {
@@ -22,7 +35,7 @@ function criarLivro(dados) {
 // IMPLEMENTAÇÃO DO PUT (Substitui todo o objeto)
 function atualizarLivroCompleto(indice, dados) {
   if (!livros[indice]) return null;
-  
+
   const livroAtualizado = new Livro(dados.titulo, dados.autor, dados.preco, dados.estoque);
   livros[indice] = livroAtualizado;
   return livroAtualizado;
@@ -44,16 +57,17 @@ function atualizarLivroParcial(indice, dados) {
 // IMPLEMENTAÇÃO DO DELETE
 function deletarLivro(indice) {
   if (!livros[indice]) return false;
-  
+
   livros.splice(indice, 1);
   return true;
 }
 
-module.exports = { 
-  listarLivros, 
-  buscarLivroPorIndice, 
-  criarLivro, 
-  atualizarLivroCompleto, 
-  atualizarLivroParcial, 
-  deletarLivro 
+module.exports = {
+  listarTodos,
+  listarLivros,
+  buscarLivroPorIndice,
+  criarLivro,
+  atualizarLivroCompleto,
+  atualizarLivroParcial,
+  deletarLivro
 };
