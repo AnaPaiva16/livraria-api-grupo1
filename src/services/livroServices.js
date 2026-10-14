@@ -22,6 +22,13 @@ function listarLivros(filtros) {
     );
   }
 
+  if (filtros.titulo) {
+    resultado = resultado.filter((livro) => 
+        livro.titulo.toLowerCase().includes(filtros.titulo.toLowerCase())
+    );
+}
+
+
   if (filtros.precoMax) {
     resultado = resultado.filter((livro) => livro.preco <= Number(filtros.precoMax));
   }
