@@ -6,9 +6,9 @@ const livroService = require("../services/livroServices");
 // }
 
 function listar(req, res) {
-  const filtros = req.query;
-  const livros = livroService.listarLivros(filtros);
-  res.status(200).json(livros);
+const filtros = req.query;
+const livros = livroService.listarLivros(filtros);
+res.status(200).json(livros);
 }
 
 // 2. Renomeado para buscarPorId e chamando livroService.buscarLivroPorId

@@ -4,7 +4,7 @@ const livros = [];
 let proximoId = 1;
 
 function listarTodos() {
-  return livros;
+  return;
 }
 
 // 3.3 — Buscar pelo id
@@ -17,14 +17,19 @@ function listarLivros(filtros) {
   
   if (filtros.autor) {
     resultado = resultado.filter((livro) =>
-      livro.autor.toLowerCase().includes(filtros.autor.toLowerCase()),
+      livro.autor.toLowerCase().includes(filtros.autor.toLowerCase())
     );
   }
 
-  if (filtros.precoMax) {
-    resultado = resultado.filter(
-      (livro) => livro.preco <= Number(filtros.precoMax),
+  if (filtros.titulo) {
+    resultado = resultado.filter((livro) => 
+        livro.titulo.toLowerCase().includes(filtros.titulo.toLowerCase())
     );
+}
+
+
+  if (filtros.precoMax) {
+    resultado = resultado.filter((livro) => livro.preco <= Number(filtros.precoMax));
   }
 
   return resultado;
