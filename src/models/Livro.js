@@ -55,6 +55,7 @@ class Livro {
     // Atualizado para incluir a categoria no retorno do JSON caso ela exista
     toJSON() {
         return {
+            id: this.id,
             titulo: this.titulo,
             autor: this.autor,
             preco: this.#preco,

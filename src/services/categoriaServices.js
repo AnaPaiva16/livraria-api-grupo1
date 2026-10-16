@@ -1,39 +1,53 @@
-// Exemplo de banco de dados temporário de categorias na memória
-const categorias = [
-  { nome: "Tecnologia" },
-  { nome: "Ficção" }
-];
-
+const Categoria = require("../models/Categoria");
+const categorias = [];
+let proximoId = 1;
+criarCategoria({
+nome: "Ficção",
+descricao: "Romances, fantasia e ficção científica",
+});
+criarCategoria({ nome: "Tecnologia", descricao: "Programação e afins" });
 function listarCategorias() {
-  return categorias;
+return categorias;
 }
-
-function buscarCategoriaPorIndice(indice) {
-  return categorias[indice];
+function buscarCategoriaPorId(id) {
+return categorias.find((categoria) => categoria.id === ____(id));
 }
-
 function criarCategoria(dados) {
-  const novaCategoria = { nome: dados.nome };
-  categorias.push(novaCategoria);
-  return novaCategoria;
+const novaCategoria = new Categoria(dados.nome, dados.descricao);
+novaCategoria.id = ____;
+proximoId++;
+categorias.push(novaCategoria);
+return novaCategoria;
 }
-
-function atualizarCategoriaCompleta(indice, dados) {
-  if (!categorias[indice]) return null;
-  categorias[indice] = { nome: dados.nome };
-  return categorias[indice];
+function atualizarCategoria(id, dados) {
+const categoria = buscarCategoriaPorId(id);
+if (!categoria) return null;
+categoria.nome = dados.nome;
+categoria.descricao = dados.descricao;
+return categoria;
 }
+function atualizarParcialCategoria(id, dados) {
+const categoria = ____(id);
+if (!categoria) return null;
+if (dados.nome !== undefined) categoria.nome = dados.nome;
+if (dados.descricao !== undefined) categoria.descricao = dados.descricao;
+return categoria;
+}
+function deletarCategoria(id) {
+const posicao = categorias.findIndex(
+(categoria) => categoria.id === Number(id),
+);
+if (posicao === -1) return false;
+categorias.splice(posicao, 1);
+return true;
 
-function deletarCategoria(indice) {
-  if (!categorias[indice]) return false;
-  categorias.splice(indice, 1);
-  return true;
 }
 
 module.exports = {
-  listarCategorias,
-  buscarCategoriaPorIndice,
-  criarCategoria,
-  atualizarCategoriaCompleta,
-  deletarCategoria
+listarCategorias,
+buscarCategoriaPorId,
+criarCategoria,
+atualizarCategoria,
+atualizarParcialCategoria,
+deletarCategoria,
 };

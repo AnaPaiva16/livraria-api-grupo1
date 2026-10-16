@@ -4,10 +4,10 @@ const categoriaController = require("../controllers/categoriaController");
 const router = express.Router();
 
 router.get("/", categoriaController.listar);
-router.get("/:indice", categoriaController.buscarPorIndice);
+router.get("/:id", categoriaController.buscarPorId);
 router.post("/", categoriaController.criar);
-router.put("/:indice", categoriaController.atualizar);
-router.patch("/:indice", categoriaController.atualizar); // Para categorias simples, o PATCH pode reutilizar a mesma lógica do PUT
-router.delete("/:indice", categoriaController.deletar);
+router.put("/:id", categoriaController.atualizarCompleto);
+router.patch("/:id", categoriaController.atualizarParcial);
+router.delete("/:id", categoriaController.deletar);
 
 module.exports = router;

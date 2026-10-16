@@ -11,9 +11,10 @@ function listar(req, res) {
   res.status(200).json(livros);
 }
 
-function buscarPorIndice(req, res) {
-  const indice = req.params.indice;
-  const livro = livroService.buscarLivroPorIndice(indice);
+// 2. Renomeado para buscarPorId e chamando livroService.buscarLivroPorId
+function buscarPorId(req, res) {
+  const id = req.params.id; // 1. Trocado req.params.indice por req.params.id
+  const livro = livroService.buscarLivroPorId(id);
 
   if (!livro) {
     return res.status(404).json({ erro: "Livro não encontrado" });
@@ -28,8 +29,8 @@ function criar(req, res) {
 
 // CONTROLADOR DO PUT
 function atualizarCompleto(req, res) {
-  const indice = req.params.indice;
-  const livroAtualizado = livroService.atualizarLivroCompleto(indice, req.body);
+  const id = req.params.id; // 1. Trocado req.params.indice por req.params.id
+  const livroAtualizado = livroService.atualizarLivroCompleto(id, req.body);
 
   if (!livroAtualizado) {
     return res.status(404).json({ erro: "Livro não encontrado" });
@@ -39,8 +40,8 @@ function atualizarCompleto(req, res) {
 
 // CONTROLADOR DO PATCH
 function atualizarParcial(req, res) {
-  const indice = req.params.indice;
-  const livroAtualizado = livroService.atualizarLivroParcial(indice, req.body);
+  const id = req.params.id; // 1. Trocado req.params.indice por req.params.id
+  const livroAtualizado = livroService.atualizarLivroParcial(id, req.body);
 
   if (!livroAtualizado) {
     return res.status(404).json({ erro: "Livro não encontrado" });
@@ -50,8 +51,8 @@ function atualizarParcial(req, res) {
 
 // CONTROLADOR DO DELETE
 function deletar(req, res) {
-  const indice = req.params.indice;
-  const excluido = livroService.deletarLivro(indice);
+  const id = req.params.id; // 1. Trocado req.params.indice por req.params.id
+  const excluido = livroService.deletarLivro(id);
 
   if (!excluido) {
     return res.status(404).json({ erro: "Livro não encontrado" });
@@ -61,7 +62,7 @@ function deletar(req, res) {
 
 module.exports = {
   listar,
-  buscarPorIndice,
+  buscarPorId, // 3. Trocado buscarPorIndice por buscarPorId
   criar,
   atualizarCompleto,
   atualizarParcial,
