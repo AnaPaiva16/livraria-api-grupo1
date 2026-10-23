@@ -10,11 +10,11 @@ function listarCategorias() {
 return categorias;
 }
 function buscarCategoriaPorId(id) {
-return categorias.find((categoria) => categoria.id === ____(id));
+return categorias.find((categoria) => categoria.id === Number(id));
 }
 function criarCategoria(dados) {
 const novaCategoria = new Categoria(dados.nome, dados.descricao);
-novaCategoria.id = ____;
+novaCategoria.id = proximoId;
 proximoId++;
 categorias.push(novaCategoria);
 return novaCategoria;
@@ -27,7 +27,7 @@ categoria.descricao = dados.descricao;
 return categoria;
 }
 function atualizarParcialCategoria(id, dados) {
-const categoria = ____(id);
+const categoria = buscarCategoriaPorId(id);
 if (!categoria) return null;
 if (dados.nome !== undefined) categoria.nome = dados.nome;
 if (dados.descricao !== undefined) categoria.descricao = dados.descricao;
