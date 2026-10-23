@@ -1,19 +1,19 @@
 class Categoria {
-  #id; // Adicionado para suportar o this.id
+  //#id; // Adicionado para suportar o this.id
   #nome;
   #descricao;
 
   // Atualizado para receber o id (ajuste conforme a assinatura do seu projeto)
   constructor(id, nome, descricao) {
-    this.#id = id;
+    //this.#id = id;
     this.#nome = nome;
     this.#descricao = descricao;
   }
 
   // Getter para o id
-  get id() {
-    return this.#id;
-  }
+  // get id() {
+  //   return this.#id;
+  // }
 
   get nome() {
     return this.#nome;
@@ -36,18 +36,18 @@ class Categoria {
     this.#descricao = novaDescricao;
   }
 
-  // Implementação do toJSON() com o id na primeira linha
-  toJSON() {
-    return {
-      id: this.id, // ou this.#id
-      nome: this.#nome,
-      descricao: this.#descricao
-    };
-  }
-
   descrever() {
     console.log("Categoria: " + this.#nome);
     console.log("Descrição: " + this.#descricao);
+  }
+
+  // Implementação do toJSON() com o id na primeira linha
+  toJSON() {
+    return {
+      id: this.id,
+      nome: this.#nome,
+      descricao: this.#descricao
+    };
   }
 }
 
