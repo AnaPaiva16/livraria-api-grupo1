@@ -1,3 +1,4 @@
+const { db } = require("../config/db");
 const Livro = require("../models/Livro");
 
 const livros = [];
@@ -12,9 +13,9 @@ function buscarLivroPorId(id) {
   return livros.find((livro) => livro.id === Number(id));
 }
 
-function listarLivros(filtros) {
-  let resultado = livros;
-  
+async function listarLivros(filtros) {
+  const [linhas] = await db.query("SELECT * FROM livros");
+  let resultado = linhas;
   if (filtros.autor) {
     resultado = resultado.filter((livro) =>
       livro.autor.toLowerCase().includes(filtros.autor.toLowerCase())
