@@ -5,10 +5,18 @@ const livroService = require("../services/livroServices");
 //   res.json(livros);
 // }
 
+<<<<<<< HEAD
 async function listar(req, res) {
 const filtros = req.query;
 const livros = await livroService.listarLivros(filtros);
 res.status(200).json(livros);
+=======
+// --- ATUALIZADO: GANHOU ASYNC E AWAIT PARA ESPERAR O BANCO DE DADOS ---
+async function listar(req, res) {
+  const filtros = req.query;
+  const livros = await livroService.listarLivros(filtros);
+  res.status(200).json(livros);
+>>>>>>> bb49c36798d1172a8506c9244f7fa51087c6cb11
 }
 
 // 2. Renomeado para buscarPorId e chamando livroService.buscarLivroPorId
