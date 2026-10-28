@@ -1,4 +1,6 @@
 const Livro = require("../models/Livro");
+// --- ACRESCENTADO: IMPORTAÇÃO DO BANCO DE DADOS ---
+const { db } = require("../config/db");
 
 const livros = [];
 let proximoId = 1;
@@ -12,8 +14,11 @@ function buscarLivroPorId(id) {
   return livros.find((livro) => livro.id === Number(id));
 }
 
-function listarLivros(filtros) {
-  let resultado = livros;
+// --- ATUALIZADO: AGORA É ASYNC E BUSCA DO BANCO (LINHAS 20 A 22) ---
+async function listarLivros(filtros) {
+  // Busca todos os livros diretamente na tabela do MySQL
+  const [linhas] = await db.query("SELECT * FROM livros");
+  let resultado = linhas;
   
   if (filtros.autor) {
     resultado = resultado.filter((livro) =>
@@ -26,7 +31,6 @@ function listarLivros(filtros) {
         livro.titulo.toLowerCase().includes(filtros.titulo.toLowerCase())
     );
 }
-
 
   if (filtros.precoMax) {
     resultado = resultado.filter((livro) => livro.preco <= Number(filtros.precoMax));
