@@ -17,6 +17,20 @@ function buscarPorId(req, res) {
 }
 
 function criar(req, res) {
+  // --- ACRESCENTADO: VALIDAÇÕES DA CATEGORIA (Pasta 3 - Erros) ---
+  const { nome } = req.body;
+
+  // 1. Validar se o nome não foi enviado ou está vazio
+  if (!nome || typeof nome !== 'string' || nome.trim() === '') {
+    return res.status(400).json({ erro: "O nome da categoria é obrigatório." });
+  }
+
+  // 2. Validar se o nome é muito curto (menos de 3 caracteres)
+  if (nome.trim().length < 3) {
+    return res.status(400).json({ erro: "O nome da categoria deve ter pelo menos 3 caracteres." });
+  }
+  // ---------------------------------------------------------------
+
   const novoLivro = categoriaService.criarCategoria(req.body);
   res.status(201).json(novoLivro);
 }

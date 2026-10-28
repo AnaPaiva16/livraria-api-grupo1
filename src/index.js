@@ -1,6 +1,8 @@
 const express = require("express");
 const routes = require("./routes");
 const logger = require("./middlewares/logger");
+// --- ACRESCENTADO: IMPORTAÇÃO DO MIDDLEWARE ---
+const rotaNaoEncontrada = require("./middlewares/rotaNaoEncontrada");
 
 const app = express();
 const PORTA = 3000;
@@ -18,6 +20,9 @@ app.get("/", (req, res) => {
 app.get("/sobre", (req, res) => {
     res.send("Página Sobre a Livraria");
 });
+
+// --- ACRESCENTADO: CASO NÃO ENCONTRE NENHUMA ROTA ACIMA, DEVOLVE JSON ---
+app.use(rotaNaoEncontrada);
 
 app.listen(PORTA, () => {
     console.log(`Servidor rodando em http://localhost:${PORTA}`);

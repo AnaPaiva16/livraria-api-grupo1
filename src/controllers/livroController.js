@@ -23,6 +23,31 @@ function buscarPorId(req, res) {
 }
 
 function criar(req, res) {
+  // --- ACRESCENTADO: VALIDAÇÕES DO LIVRO (Pasta 3 - Erros) ---
+  
+  // 1. Validar Content-Type para evitar erro 500 caso venha vazio
+  if (!req.is('json')) {
+    return res.status(400).json({ erro: "Content-Type deve ser application/json" });
+  }
+
+  const { titulo, preco } = req.body;
+
+  // 2. Validar livro sem título
+  if (!titulo || typeof titulo !== 'string' || titulo.trim() === '') {
+    return res.status(400).json({ erro: "O título do livro é obrigatório." });
+  }
+
+  // 3. Validar preço (negativo ou texto)
+  if (preco !== undefined) {
+    if (typeof preco !== 'number' || isNaN(preco)) {
+      return res.status(400).json({ erro: "O preço deve ser um número válido." });
+    }
+    if (preco < 0) {
+      return res.status(400).json({ erro: "O preço não pode ser negativo." });
+    }
+  }
+  // -----------------------------------------------------------
+
   const novoLivro = livroService.criarLivro(req.body);
   res.status(201).json(novoLivro);
 }
@@ -41,6 +66,14 @@ function atualizarCompleto(req, res) {
 // CONTROLADOR DO PATCH
 function atualizarParcial(req, res) {
   const id = req.params.id; // 1. Trocado req.params.indice por req.params.id
+
+  // --- ACRESCENTADO: VALIDAÇÃO DE ESTOQUE NEGATIVO (Pasta 1 e 3) ---
+  const { estoque } = req.body;
+  if (estoque !== undefined && estoque < 0) {
+    return res.status(400).json({ erro: "O estoque não pode ser negativo." });
+  }
+  // -----------------------------------------------------------------
+
   const livroAtualizado = livroService.atualizarLivroParcial(id, req.body);
 
   if (!livroAtualizado) {
