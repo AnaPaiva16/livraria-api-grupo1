@@ -1,5 +1,4 @@
 const { db } = require("../config/db");
-const Livro = require("../models/Livro");
 
 // 1. Listar Livros com filtros direto no banco
 async function listarLivros(filtros) {
@@ -45,10 +44,10 @@ async function criarLivro(dados) {
     [dados.titulo, dados.autor, dados.preco, dados.estoque]
   );
   
-  return { id: resultado.insertId, ...dados };
+  return await buscarLivroPorId(resultado.insertId);
 }
 
-// 5. Atualizar completo pelo id no Banco de Dados
+// 5. Atualizar completo pelo id no Banco de Dados (Corrigido para retornar do banco)
 async function atualizarLivroCompleto(id, dados) {
   const [resultado] = await db.query(
     "UPDATE livros SET titulo = ?, autor = ?, preco = ?, estoque = ? WHERE id = ?",
@@ -56,15 +55,16 @@ async function atualizarLivroCompleto(id, dados) {
   );
 
   if (resultado.affectedRows === 0) return null;
-  return { id: Number(id), ...dados };
+  
+  // 💡 Alterado para buscar a versão fresca salva no banco (Evita divergência de dados)
+  return await buscarLivroPorId(id);
 }
 
-// 6. Atualizar parcial pelo id (Corrigido com async/await e SQL)
+// 6. Atualizar parcial pelo id (Sua lógica está funcional e segura!)
 async function atualizarLivroParcial(id, dados) {
   const livro = await buscarLivroPorId(id);
   if (!livro) return null;
 
-  // Se o dado não foi enviado na requisição, mantém o que já estava no banco
   const titulo = dados.titulo !== undefined ? dados.titulo : livro.titulo;
   const autor = dados.autor !== undefined ? dados.autor : livro.autor;
   const preco = dados.preco !== undefined ? dados.preco : livro.preco;
@@ -75,13 +75,13 @@ async function atualizarLivroParcial(id, dados) {
     [titulo, autor, preco, estoque, id]
   );
 
-  return { id: Number(id), titulo, autor, preco, estoque };
+  return await buscarLivroPorId(id);
 }
 
 // 7. Apagar pelo id no Banco de Dados
 async function deletarLivro(id) {
   const [resultado] = await db.query("DELETE FROM livros WHERE id = ?", [id]);
-  return resultado.affectedRows > 0; // Retorna true se deletou alguém, false se não encontrou
+  return resultado.affectedRows > 0; 
 }
 
 module.exports = {
