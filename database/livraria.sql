@@ -21,3 +21,5 @@ SELECT * FROM livros;
 SELECT * FROM livros WHERE id = 3;
 
 SELECT * FROM livros WHERE id = 99;
+
+UPDATE livros SET preco = 35.00 WHERE id = 3;
