@@ -13,7 +13,11 @@ CREATE TABLE livros (
 INSERT INTO livros (titulo, autor, preco, estoque) VALUES
 ('Clean Code', 'Robert C. Martin', 89.90, 12),
 ('Eloquent JavaScript', 'Marijn Haverbeke', 45.00, 20),
-('O Hobbit', 'J.R.R. Tolkien', 39.90, 8);
+('O Hobbit', 'J.R.R. Tolkien', 39.90, 8),
 ('O Senhor dos Anéis', 'J.R.R. Tolkien', 79.90, 5);
 
 SELECT * FROM livros;
+
+SELECT * FROM livros WHERE id = 3;
+
+SELECT * FROM livros WHERE id = 99;

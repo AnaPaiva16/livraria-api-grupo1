@@ -1,121 +1,93 @@
 const { db } = require("../config/db");
 const Livro = require("../models/Livro");
-// --- ACRESCENTADO: IMPORTAÇÃO DO BANCO DE DADOS ---
-const { db } = require("../config/db");
 
-const livros = [];
-let proximoId = 1;
-
-function listarTodos() {
-  return;
-}
-
-// 3.3 — Buscar pelo id
-function buscarLivroPorId(id) {
-  return livros.find((livro) => livro.id === Number(id));
-}
-
-<<<<<<< HEAD
+// 1. Listar Livros com filtros direto no banco
 async function listarLivros(filtros) {
   const [linhas] = await db.query("SELECT * FROM livros");
   let resultado = linhas;
-=======
-// --- ATUALIZADO: AGORA É ASYNC E BUSCA DO BANCO (LINHAS 20 A 22) ---
-async function listarLivros(filtros) {
-  // Busca todos os livros diretamente na tabela do MySQL
-  const [linhas] = await db.query("SELECT * FROM livros");
-  let resultado = linhas;
-  
->>>>>>> bb49c36798d1172a8506c9244f7fa51087c6cb11
-  if (filtros.autor) {
+
+  if (filtros && filtros.autor) {
     resultado = resultado.filter((livro) =>
       livro.autor.toLowerCase().includes(filtros.autor.toLowerCase())
     );
   }
 
-  if (filtros.titulo) {
-    resultado = resultado.filter((livro) => 
-        livro.titulo.toLowerCase().includes(filtros.titulo.toLowerCase())
+  if (filtros && filtros.titulo) {
+    resultado = resultado.filter((livro) =>
+      livro.titulo.toLowerCase().includes(filtros.titulo.toLowerCase())
     );
-}
+  }
 
-  if (filtros.precoMax) {
-    resultado = resultado.filter((livro) => livro.preco <= Number(filtros.precoMax));
+  if (filtros && filtros.precoMax) {
+    resultado = resultado.filter(
+      (livro) => livro.preco <= Number(filtros.precoMax)
+    );
   }
 
   return resultado;
 }
 
-function criarLivro(dados) {
-  const novoLivro = new Livro(
-    dados.titulo,
-    dados.autor,
-    dados.preco,
-    dados.estoque,
-  );
-  novoLivro.id = proximoId;
-  proximoId++;
-  livros.push(novoLivro);
-  return novoLivro;
+// 2. Listar todos chama a função de listagem sem filtros
+async function listarTodos() {
+  return await listarLivros();
 }
 
-// 3.4 — Atualizar completo pelo id
-function atualizarLivroCompleto(id, dados) {
-  const livro = buscarLivroPorId(id);
+// 3. Buscar Livro por ID 
+async function buscarLivroPorId(id) {
+  const [linhas] = await db.query("SELECT * FROM livros WHERE id = ?", [id]);
+  return linhas[0]; // Retorna o primeiro livro encontrado (ou undefined)
+}
+
+// 4. Criar Livro direto no Banco de Dados
+async function criarLivro(dados) {
+  const [resultado] = await db.query(
+    "INSERT INTO livros (titulo, autor, preco, estoque) VALUES (?, ?, ?, ?)",
+    [dados.titulo, dados.autor, dados.preco, dados.estoque]
+  );
+  
+  return { id: resultado.insertId, ...dados };
+}
+
+// 5. Atualizar completo pelo id no Banco de Dados
+async function atualizarLivroCompleto(id, dados) {
+  const [resultado] = await db.query(
+    "UPDATE livros SET titulo = ?, autor = ?, preco = ?, estoque = ? WHERE id = ?",
+    [dados.titulo, dados.autor, dados.preco, dados.estoque, id]
+  );
+
+  if (resultado.affectedRows === 0) return null;
+  return { id: Number(id), ...dados };
+}
+
+// 6. Atualizar parcial pelo id (Corrigido com async/await e SQL)
+async function atualizarLivroParcial(id, dados) {
+  const livro = await buscarLivroPorId(id);
   if (!livro) return null;
 
-  const posicao = livros.findIndex((l) => l.id === Number(id));
+  // Se o dado não foi enviado na requisição, mantém o que já estava no banco
+  const titulo = dados.titulo !== undefined ? dados.titulo : livro.titulo;
+  const autor = dados.autor !== undefined ? dados.autor : livro.autor;
+  const preco = dados.preco !== undefined ? dados.preco : livro.preco;
+  const estoque = dados.estoque !== undefined ? dados.estoque : livro.estoque;
 
-  const livroAtualizado = new Livro(
-    dados.titulo,
-    dados.autor,
-    dados.preco,
-    dados.estoque,
+  await db.query(
+    "UPDATE livros SET titulo = ?, autor = ?, preco = ?, estoque = ? WHERE id = ?",
+    [titulo, autor, preco, estoque, id]
   );
-  livroAtualizado.id = livro.id; 
-  livros[posicao] = livroAtualizado;
-  return livroAtualizado;
+
+  return { id: Number(id), titulo, autor, preco, estoque };
 }
 
-// 3.4 — Atualizar parcial pelo id
-function atualizarLivroParcial(id, dados) {
-  const livro = buscarLivroPorId(id);
-  if (!livro) return null;
-
-  if (dados.titulo !== undefined) livro.titulo = dados.titulo;
-  if (dados.autor !== undefined) livro.autor = dados.autor;
-  if (dados.preco !== undefined) livro.preco = dados.preco;
-  if (dados.estoque !== undefined) livro.estoque = dados.estoque;
-
-  return livro;
+// 7. Apagar pelo id no Banco de Dados
+async function deletarLivro(id) {
+  const [resultado] = await db.query("DELETE FROM livros WHERE id = ?", [id]);
+  return resultado.affectedRows > 0; // Retorna true se deletou alguém, false se não encontrou
 }
 
-// 3.4 — Apagar pelo id
-function deletarLivro(id) {
-  const posicao = livros.findIndex((livro) => livro.id === Number(id));
-  if (posicao === -1) return false;
-
-  livros.splice(posicao, 1);
-  return true;
-}
-
-criarLivro({ 
-  titulo: "Clean Code", 
-  autor: "Robert C. Martin", 
-  preco: 89.9, 
-  estoque: 12 });
-
-criarLivro({ 
-  titulo: "Eloquent JavaScript", 
-  autor: "Marijn Haverbeke", 
-  preco: 45.0, 
-  estoque: 20 });
-
-// Exportações atualizadas conforme a última imagem!
 module.exports = {
   listarTodos,
   listarLivros,
-  buscarLivroPorId, 
+  buscarLivroPorId,
   criarLivro,
   atualizarLivroCompleto,
   atualizarLivroParcial,
