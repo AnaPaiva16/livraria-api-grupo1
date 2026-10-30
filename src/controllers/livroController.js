@@ -18,31 +18,34 @@ async function buscarPorId(req, res) {
   res.json(livro);
 }
 
-// 3. CRIAR LIVRO (Atualizado com async e await!)
+// 3. CRIAR LIVRO (Ajustado para o gabarito da atividade)
 async function criar(req, res) {
+  const { titulo, autor, preco, estoque } = req.body;
+
   // Validar Content-Type para evitar erro 500 caso venha vazio
   if (!req.is('json')) {
     return res.status(400).json({ erro: "Content-Type deve ser application/json" });
   }
 
-  const { titulo, preco } = req.body;
+  // Validação direta exigida pelo teste: se faltar o título ou qualquer outro dado obrigatório
+  if (!titulo || !autor || preco === undefined || estoque === undefined) {
+    return res.status(400).json({ erro: "Todos os campos (titulo, autor, preco, estoque) são obrigatórios." });
+  }
 
-  // Validar livro sem título
-  if (!titulo || typeof titulo !== 'string' || titulo.trim() === '') {
+  // Validar livro sem título ou com espaços vazios
+  if (typeof titulo !== 'string' || titulo.trim() === '') {
     return res.status(400).json({ erro: "O título do livro é obrigatório." });
   }
 
   // Validar preço (negativo ou texto)
-  if (preco !== undefined) {
-    if (typeof preco !== 'number' || isNaN(preco)) {
-      return res.status(400).json({ erro: "O preço deve ser um número válido." });
-    }
-    if (preco < 0) {
-      return res.status(400).json({ erro: "O preço não pode ser negativo." });
-    }
+  if (typeof preco !== 'number' || isNaN(preco)) {
+    return res.status(400).json({ erro: "O preço deve ser um número válido." });
+  }
+  if (preco < 0) {
+    return res.status(400).json({ erro: "O preço não pode ser negativo." });
   }
 
-  // Adicionado o await aqui, para esperar salvar no banco
+  // O await já está certinho aqui!
   const novoLivro = await livroService.criarLivro(req.body);
   res.status(201).json(novoLivro);
 }
