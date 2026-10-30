@@ -34,7 +34,7 @@ async function listarTodos() {
 // 3. Buscar Livro por ID 
 async function buscarLivroPorId(id) {
   const [linhas] = await db.query("SELECT * FROM livros WHERE id = ?", [id]);
-  return linhas[0]; // Retorna o primeiro livro encontrado (ou undefined)
+  return linhas[0];
 }
 
 // 4. Criar Livro direto no Banco de Dados
@@ -47,7 +47,7 @@ async function criarLivro(dados) {
   return await buscarLivroPorId(resultado.insertId);
 }
 
-// 5. Atualizar completo pelo id no Banco de Dados (Corrigido para retornar do banco)
+// 5. Atualizar completo pelo id no Banco de Dados
 async function atualizarLivroCompleto(id, dados) {
   const [resultado] = await db.query(
     "UPDATE livros SET titulo = ?, autor = ?, preco = ?, estoque = ? WHERE id = ?",
@@ -56,11 +56,10 @@ async function atualizarLivroCompleto(id, dados) {
 
   if (resultado.affectedRows === 0) return null;
   
-  // 💡 Alterado para buscar a versão fresca salva no banco (Evita divergência de dados)
   return await buscarLivroPorId(id);
 }
 
-// 6. Atualizar parcial pelo id (Sua lógica está funcional e segura!)
+// 6. Atualizar parcial pelo id
 async function atualizarLivroParcial(id, dados) {
   const livro = await buscarLivroPorId(id);
   if (!livro) return null;
