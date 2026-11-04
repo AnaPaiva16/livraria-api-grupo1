@@ -4,8 +4,8 @@ const { testarConexao } = require("./config/db");
 const express = require("express");
 const routes = require("./routes");
 const logger = require("./middlewares/logger");
-// --- ACRESCENTADO: IMPORTAÇÃO DO MIDDLEWARE ---
 const rotaNaoEncontrada = require("./middlewares/rotaNaoEncontrada");
+const tratarErros = require("./tratarErros"); // Importação do seu middleware de erros
 
 const app = express();
 const PORTA = 3000;
@@ -23,8 +23,11 @@ app.get("/sobre", (req, res) => {
     res.send("Página Sobre a Livraria");
 });
 
-// --- ACRESCENTADO: CASO NÃO ENCONTRE NENHUMA ROTA ACIMA, DEVOLVE JSON ---
+// Caso não encontre nenhuma rota acima, devolve 404 Not Found
 app.use(rotaNaoEncontrada);
+
+// Intercepta qualquer erro que aconteça nas rotas ou no banco (DEVE SER O ÚLTIMO MIDDLEWARE)
+app.use(tratarErros);
 
 app.listen(PORTA, () => {
     console.log(`Servidor rodando em http://localhost:${PORTA}`);
