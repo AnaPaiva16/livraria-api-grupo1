@@ -14,6 +14,18 @@ function tratarErros(err, req, res, next) {
         return;
     }
 
+    // Categoria informada não existe no banco (Chave Estrangeira)
+    if (err.code === "ER_NO_REFERENCED_ROW_2") {
+        res.status(400).json({ erro: "A categoria informada nao existe" });
+        return;
+    }
+
+    // Tentativa de apagar categoria que ainda possui livros (Chave Estrangeira)
+    if (err.code === "ER_ROW_IS_REFERENCED_2") {
+        res.status(409).json({ erro: "A categoria tem livros e nao pode ser apagada" });
+        return;
+    }
+
     // Erro genérico (Qualquer outro erro que aconteça no servidor)
     res.status(500).json({ erro: "Erro interno no servidor" });
 }

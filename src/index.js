@@ -5,7 +5,7 @@ const express = require("express");
 const routes = require("./routes");
 const logger = require("./middlewares/logger");
 const rotaNaoEncontrada = require("./middlewares/rotaNaoEncontrada");
-const tratarErros = require("./tratarErros"); // Importação do seu middleware de erros
+const tratarErros = require("./middlewares/tratarErros"); // Importação do seu middleware de erros
 
 const app = express();
 const PORTA = 3000;
