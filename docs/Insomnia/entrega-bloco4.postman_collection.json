@@ -1,0 +1,621 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: "Livraria API - Entrega do Bloco 4 "
+meta:
+  id: wrk_a6f15f9d63f74caabc33472b03b9aff7
+  created: 1794585885650
+  modified: 1794585885650
+  description: ""
+collection:
+  - name: 1 - Livros
+    meta:
+      id: fld_af6128cfdf3d45ec82308313300019d0
+      created: 1794585940364
+      modified: 1794585940364
+      sortKey: -1794585940365
+      description: ""
+    children:
+      - url: http://localhost:3000/livros
+        name: Listar todos
+        meta:
+          id: req_288358380dbd4c80aaa84da0fe19ce3b
+          created: 1794585889371
+          modified: 1794585952318
+          isPrivate: false
+          description: ""
+          sortKey: -1794585942657
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/1
+        name: Buscar por ID
+        meta:
+          id: req_66527d1feed14e728de3fc4eb329471e
+          created: 1794585959605
+          modified: 1794585980611
+          isPrivate: false
+          description: ""
+          sortKey: -1794585959605
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros
+        name: Criar livro
+        meta:
+          id: req_443e34c1482243d7a00cb23d65f0dd2f
+          created: 1794585981965
+          modified: 1794586074167
+          isPrivate: false
+          description: ""
+          sortKey: -1794585981965
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "titulo": "Código Limpo na Prática",
+              "autor": "Autor Teste",
+              "preco": 55.90,
+              "estoque": 10,
+              "categoria_id": 2
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/12
+        name: Atualizar livro completo
+        meta:
+          id: req_7b4396cd9c9a4620bbe44b7fb63c1139
+          created: 1794586100074
+          modified: 1794586143801
+          isPrivate: false
+          description: ""
+          sortKey: -1794586100074
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "titulo": "Código Limpo Atualizado",
+              "autor": "Autor Teste",
+              "preco": 60.00,
+              "estoque": 15,
+              "categoria_id": 2
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/12
+        name: Atualizar estoque
+        meta:
+          id: req_ac7fd610ec624f259fdc49bcbb6eedc3
+          created: 1794586156803
+          modified: 1794586256287
+          isPrivate: false
+          description: ""
+          sortKey: -1794586156803
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "estoque": 20
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/12
+        name: New Request
+        meta:
+          id: req_6b1b02ef0d60400b8415569bea123c06
+          created: 1794586285880
+          modified: 1794586295370
+          isPrivate: false
+          description: ""
+          sortKey: -1794586285880
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: 2 - Categorias
+    meta:
+      id: fld_3df625dc09bb4e53b4106387e4e5406f
+      created: 1794586310986
+      modified: 1794586310986
+      sortKey: -1794586310986
+      description: ""
+    children:
+      - url: http://localhost:3000/categorias
+        name: Listar categorias
+        meta:
+          id: req_3055026bff214583ae8dba6e28af9110
+          created: 1794586316961
+          modified: 1794586334694
+          isPrivate: false
+          description: ""
+          sortKey: -1794586316961
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias/1
+        name: Buscar categoria por ID
+        meta:
+          id: req_d30029936f2648d1bfcabfb3d769ff0b
+          created: 1794586349944
+          modified: 1794586402827
+          isPrivate: false
+          description: ""
+          sortKey: -1794586328701
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias
+        name: Criar categoria
+        meta:
+          id: req_9c9a250b38a849b598741a22804b840e
+          created: 1794586381446
+          modified: 1794586420759
+          isPrivate: false
+          description: ""
+          sortKey: -1794586334571
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "História",
+              "descricao": "Livros históricos e biografias"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias/4
+        name: "Atualizar categoria "
+        meta:
+          id: req_4f20587ec43d4f2ebac732f834f16a50
+          created: 1794586427921
+          modified: 1794586463151
+          isPrivate: false
+          description: ""
+          sortKey: -1794586427921
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "História Geral",
+              "descricao": "História mundial e do Brasil"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias/4
+        name: Apagar categoria vazia
+        meta:
+          id: req_a77c285489d84087b19e38543a95e883
+          created: 1794586465799
+          modified: 1794586487561
+          isPrivate: false
+          description: ""
+          sortKey: -1794586465799
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: 3 - Erros
+    meta:
+      id: fld_6cb3e6584aff486c92487298d0def597
+      created: 1794586502486
+      modified: 1794586502486
+      sortKey: -1794586502486
+      description: ""
+    children:
+      - url: http://localhost:3000/livros
+        name: Livro com dados inválidos
+        meta:
+          id: req_97071a5b4cf14f5590dc83fc7b9330ad
+          created: 1794586533810
+          modified: 1794586576362
+          isPrivate: false
+          description: ""
+          sortKey: -1794586490006.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"titulo": "", 
+              "preco": -10
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/1
+        name: Estoque negativo
+        meta:
+          id: req_f995dd76f59c4377ae9196e32a51f5b4
+          created: 1794586608051
+          modified: 1794586656081
+          isPrivate: false
+          description: ""
+          sortKey: -1794586608051
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |
+            {
+            	"estoque": -5
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias
+        name: Categoria sem nome
+        meta:
+          id: req_2ee354448a5a4fcab8257a048d796065
+          created: 1794586659698
+          modified: 1794586696402
+          isPrivate: false
+          description: ""
+          sortKey: -1794586659698
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/9999
+        name: Livro não encontrado
+        meta:
+          id: req_a9fac962138a4dc39aa9fbcc7635cd02
+          created: 1794586706138
+          modified: 1794586720557
+          isPrivate: false
+          description: ""
+          sortKey: -1794586706138
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/rota-que-nao-existe
+        name: "Rota inexistente "
+        meta:
+          id: req_59bd19d97fc643a3ad571d45d06cfcc5
+          created: 1794586722551
+          modified: 1794586763826
+          isPrivate: false
+          description: ""
+          sortKey: -1794586722551
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: 4 - Erros do banco
+    meta:
+      id: fld_71fbf53717fc4ab99404e0db507f5cb8
+      created: 1794586782280
+      modified: 1794586782280
+      sortKey: -1794586782280
+      description: ""
+    children:
+      - url: http://localhost:3000/livros
+        name: Título grande demais
+        meta:
+          id: req_abf1c6d902cd46298f3674e265ee67f7
+          created: 1794586773547
+          modified: 1794586837868
+          isPrivate: false
+          description: ""
+          sortKey: -1794586784489
+        method: POST
+        body:
+          mimeType: application/json
+          text: >-
+            {
+              "titulo": "Título absurdamente gigante que ultrapassa com toda certeza o limite máximo de cento e cinquenta caracteres definido lá na tabela de livros do nosso banco de dados MySQL",
+              "autor": "Autor",
+              "preco": 50.00,
+              "estoque": 5,
+              "categoria_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros
+        name: Preço grande demais
+        meta:
+          id: req_6bcf43afe0d9470a96937d90d74d3433
+          created: 1794586850302
+          modified: 1794586995250
+          isPrivate: false
+          description: ""
+          sortKey: -1794586850302
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "titulo": "Livro Caro",
+              "autor": "Autor",
+              "preco": 999999999999.99,
+              "estoque": 5,
+              "categoria_id": 1
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros
+        name: JSON mal escrito
+        meta:
+          id: req_bb41e9bed8da48f08bbb541c3afbce9c
+          created: 1794586893286
+          modified: 1794586947501
+          isPrivate: false
+          description: ""
+          sortKey: -1794586893286
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"titulo": "Sem fechar aspas, 
+            	"preco": 20
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: 5 - Relacionamento
+    meta:
+      id: fld_e14e116d56c54e52bce607472bb34aa4
+      created: 1794587141316
+      modified: 1794587141316
+      sortKey: -1794587141316
+      description: ""
+    children:
+      - url: http://localhost:3000/livros
+        name: Criar livro com categoria
+        meta:
+          id: req_e72d3701d51e4a268ec0ed29b82c4f44
+          created: 1794587143490
+          modified: 1794587195709
+          isPrivate: false
+          description: ""
+          sortKey: -1794587143490
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "titulo": "Arquitetura Limpa",
+              "autor": "Robert C. Martin",
+              "preco": 95.00,
+              "estoque": 10,
+              "categoria_id": 2
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros/1
+        name: Buscar livro trazendo nome da categoria
+        meta:
+          id: req_8f7fa93148694927a1d820a39f150a8d
+          created: 1794587213458
+          modified: 1794587247323
+          isPrivate: false
+          description: ""
+          sortKey: -1794587213458
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/livros
+        name: "Criar livro com categoria inexistente "
+        meta:
+          id: req_73288043bfb14f6e8376e4afa31ecb54
+          created: 1794587316938
+          modified: 1794587372079
+          isPrivate: false
+          description: ""
+          sortKey: -1794587316938
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "titulo": "Livro Órfão",
+              "autor": "Autor",
+              "preco": 40.00,
+              "estoque": 5,
+              "categoria_id": 9999
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/categorias/2
+        name: Apagar categoria que tem livros vinculados
+        meta:
+          id: req_8b9b520c176b4dfe9e461a23f2db871f
+          created: 1794587380427
+          modified: 1794587400412
+          isPrivate: false
+          description: ""
+          sortKey: -1794587380427
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_4626c8f3607454aa20c9d6f1f86cd81065d8229a
+    created: 1794585885653
+    modified: 1794585885653
+environments:
+  name: Base Environment
+  meta:
+    id: env_4626c8f3607454aa20c9d6f1f86cd81065d8229a
+    created: 1794585885652
+    modified: 1794585885652
+    isPrivate: false

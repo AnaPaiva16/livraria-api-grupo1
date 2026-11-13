@@ -1,0 +1,8 @@
+# Use this workspace to collaborate
+workspace:
+  id: af866ea8-3b19-4c94-8ab5-8cf7489e082f
+
+localResources:
+  collections:
+    - ../entrega-bloco3.postman_collection.json
+    - ../livraria-grupo 1.postman_collection.json

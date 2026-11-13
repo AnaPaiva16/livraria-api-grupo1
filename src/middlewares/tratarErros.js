@@ -2,6 +2,12 @@ function tratarErros(err, req, res, next) {
     // Parte 2: Linha opcional para mostrar o código no terminal (útil para o Integrante 1)
     console.log("ERRO:", err.code); 
 
+    // JSON mal escrito no corpo da requisição
+    if (err.type === "entity.parse.failed") {
+        res.status(400).json({ erro: "JSON inválido ou mal escrito" });
+        return;
+    }
+
     // Banco desligado / Porta errada
     if (err.code === "ECONNREFUSED") {
         res.status(503).json({ erro: "Banco de dados indisponivel" });
