@@ -25,6 +25,14 @@ async function listarLivros(filtros) {
     );
   }
 
+  if (filtros && filtros.categoria) {
+    resultado = resultado.filter(
+      (livro) =>
+        livro.categoria !== null &&
+        livro.categoria.toLowerCase().includes(filtros.categoria.toLowerCase())
+    );
+  }
+
   return resultado;
 }
 
@@ -69,7 +77,11 @@ function validarLivro(dados, completo) {
     return "O estoque deve ser um numero positivo";
   }
 
-  if (dados.categoria_id !== undefined && typeof dados.categoria_id !== "number") {
+  if (
+    dados.categoria_id !== undefined &&
+    dados.categoria_id !== null &&
+    typeof dados.categoria_id !== "number"
+  ) {
     return "O categoria_id deve ser um numero";
   }
 
