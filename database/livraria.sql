@@ -25,13 +25,20 @@ CREATE TABLE livros (
 
 INSERT INTO categorias (nome, descricao) VALUES
 ('Ficção', 'Romances, fantasia e ficção científica'),
-('Tecnologia', 'Programação, Engenharia de software e afins');
+('Tecnologia', 'Programação, Engenharia de software e afins'),
+('Infantil', 'Livros para crianças');
 
 INSERT INTO livros (titulo, autor, preco, estoque, categoria_id) VALUES
 ('Clean Code', 'Robert C. Martin', 89.90, 12, 2),
 ('Eloquent JavaScript', 'Marijn Haverbeke', 45.00, 20, 2),
 ('O Hobbit', 'J.R.R. Tolkien', 39.90, 8, 1),
 ('O Senhor dos Anéis', 'J.R.R. Tolkien', 79.90, 5, 1),
-('Revolução dos Estrupícios', 'I. Francisco', 59.90, 30, 1);
+('Revolução dos Estrupícios', 'I. Francisco', 59.90, 30, 1),
+('O Pequeno Príncipe', 'Antoine de Saint-Exupéry', 29.90, 10, 3),
+('O Pequeno Príncipe Preto', 'Rodrigo França', 39.90, 10, 3),
+('Duna', 'Frank Herbert', 79.90, 15, 1),
+('Entendendo Algoritmos', 'Aditya Bhargava', 65.00, 18, 2),
+('Harry Potter e a Pedra Filosofal', 'J.K. Rowling', 49.90, 25, 1),
+('Menino Maluquinho', 'Ziraldo', 34.90, 14, 3);
 
 SELECT * FROM livros;
