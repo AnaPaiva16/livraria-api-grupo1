@@ -88,7 +88,7 @@ livraria-api-grupo1/
 ├── src/
 │   ├── config/             # Configurações de conexão com o banco de dados
 │   ├── controllers/        # Controladores das requisições (Livros e Categorias)
-│   ├── database/           # Scripts e utilitários de banco
+│   ├── database/           # Scripts e utilitár'ios de banco
 │   ├── middlewares/        # logger.js, rotaNaoEncontrada.js e tratarErros.js
 │   ├── models/             # Classes e modelos de domínio da livraria
 │   ├── routes/             # Definição das rotas da API
